@@ -8,5 +8,8 @@
 
 void main(void)
 {
+    //This is a change that I made
+    int changed;
+    int changedagain;
     
 }
