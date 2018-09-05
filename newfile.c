@@ -5,3 +5,8 @@
 #pragma config FOSC = HS
 #pragma config WDT = OFF
 #pragma config LVP = OFF
+
+void main(void)
+{
+    
+}
