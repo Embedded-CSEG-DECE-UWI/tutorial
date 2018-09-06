@@ -14,12 +14,12 @@ void main(void){
     
     bool isWorking = true;      //initializes the variable to true
     
-    TRISB = 0;                  //configures all the TRISB bits as outputs
+    TRISD = 0;                  //configures all the TRISB bits as outputs
     
     while(isWorking){           //while this condition is the same, the block of code is repeated
-        PORTB = 1;              //sets PORTB to high (this turns the LED on)
+        PORTD = 1;              //sets PORTB to high (this turns the LED on)
         Delay10KTCYx(100);      //delays for 1 sec
-        PORTB = 0;              //sets PORTB to low (this turns the LED off)
+        PORTD = 0;              //sets PORTB to low (this turns the LED off)
     }
 
 }
