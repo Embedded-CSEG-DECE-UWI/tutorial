@@ -8,7 +8,7 @@
 #pragma config WDT = OFF        //Watchdog Timer OFF
 #pragma config LVP = OFF        //Low Voltage Programming OFF
 
-typedef int bool;               //defining a new data type with additional keywords
+typedef int bool;               //defining a new data type with additional key-words
 #define true 1
 #define false 0;
 
