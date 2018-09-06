@@ -19,8 +19,10 @@ void main(void){
     TRISB = 0x00;               //configures all the TRISB bits as outputs
    
     while(isWorking){           //while this condition is the same, the block of code is repeated
-        PORTBbits.RB4 = 1;      //sets PORTB, RB4 to high (this turns the LED on) 
+        //PORTB = 0xFF            //sets PORTB to high (this turns the LED on   
+        PORTBbits.RB4 = 1;      //sets RB4 to high (this turns the LED on) 
         Delay10KTCYx(100);      //delays for 1 sec
+        //PORTB = 0x00            //sets PORTB to low (this turns the LED off)
         PORTBbits.RB4 = 0;      //sets PORTB, RB4 to low (this turns the LED off)
         Delay10KTCYx(100);
     }
