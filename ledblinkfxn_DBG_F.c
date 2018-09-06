@@ -12,6 +12,8 @@ typedef int bool;               //defining a new data type with additional keywo
 #define true 1
 #define false 0;
 
+void toggleBit();
+
 void main(void){
     
     bool isWorking = true;      //initializes the variable to true
@@ -19,14 +21,16 @@ void main(void){
     TRISB = 0x00;               //configures all the TRISB bits as outputs
    
     while(isWorking){           //while this condition is the same, the block of code is repeated
-        //PORTB = 0xFF          //sets PORTB to high (this turns the LED on)
-        //PORTBbits.RB4 = 1;    //sets PORTB, RB4 to high (this turns the LED on)
-        PORTB = 0b00010000;     //sets PORTB, RB4 to high using binary notation (this turns the LED on)
+        toggleBit();            //calls the function to toggle the bit
         Delay10KTCYx(100);      //delays for 1 sec
-        //PORTB = 0x00          //sets PORTB to low (this turns the LED off)
-        //PORTBbits.RB4 = 0;    //sets PORTB, RB4 to low (this turns the LED off)
-        PORTB = 0b00000000;     //sets PORTB, RB4 to low using binary notation (this turns the LED off)
-        Delay10KTCYx(100);
+        toggleBit();            //calls the function to toggle the bit
+        Delay10KTCYx(100);      //delays for 1 sec
     }
     Sleep();                    //Puts the microprocessor to sleep mode
 }
+
+//Toggles the state of the bit
+void toggleBit(){
+    PORTBbits.RB4 = !PORTBbits.RB4  
+}
+
