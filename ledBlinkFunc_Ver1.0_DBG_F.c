@@ -25,5 +25,5 @@ void main(void)
 //Toggles the state of the bit
 void toggleBit(){
     PORTBbits.RB4 = !PORTBbits.RB4; 
-}
+}   
 
