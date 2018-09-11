@@ -29,8 +29,8 @@ void main(void){
     Sleep();                    //Puts the microprocessor to sleep mode
 }
 
-//Toggles the state of the bit
+//Toggles the state of the bit`
 void toggleBit(){
-    PORTBbits.RB4 = !PORTBbits.RB4  
+    PORTBbits.RB4 = !PORTBbits.RB4; 
 }
 
