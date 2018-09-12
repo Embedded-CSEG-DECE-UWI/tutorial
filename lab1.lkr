@@ -1,4 +1,4 @@
-// File: 18f452_g.lkr
+// File: lab1.lkr
 // Generic linker script for the PIC18F452 processor
 
 #DEFINE _CODEEND _DEBUGCODESTART - 1
