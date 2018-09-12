@@ -1,5 +1,5 @@
 MPLINK 5.00, LINKER
-Linker Map File - Created Wed Sep 12 16:48:19 2018
+Linker Map File - Created Wed Sep 12 18:13:05 2018
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -23,13 +23,13 @@ Linker Map File - Created Wed Sep 12 16:48:19 2018
     .config_300006_lab1.o    romdata   0x300006    program   0x000001
                 MATH_DATA      udata   0x000000       data   0x000002
                  .tmpdata      udata   0x000002       data   0x000000
-           .udata_c018i.o      udata   0x000080       data   0x00000a
-            .udata_lab1.o      udata   0x00008a       data   0x000002
-           .idata_c018i.o      idata   0x00008c       data   0x000000
-            .idata_lab1.o      idata   0x00008c       data   0x000000
-          .udata___init.o      udata   0x00008c       data   0x000000
-          .idata___init.o      idata   0x00008c       data   0x000000
-                   .stack      udata   0x000500       data   0x000100
+           .udata_c018i.o      udata   0x000381       data   0x00000a
+            .udata_lab1.o      udata   0x00038b       data   0x000002
+           .idata_c018i.o      idata   0x00038d       data   0x000000
+            .idata_lab1.o      idata   0x00038d       data   0x000000
+          .udata___init.o      udata   0x00038d       data   0x000000
+          .idata___init.o      idata   0x00038d       data   0x000000
+                   .stack      udata   0x000600       data   0x000100
             SFR_UNBANKED0      udata   0x000f80       data   0x000080
 
 
@@ -241,11 +241,11 @@ Linker Map File - Created Wed Sep 12 16:48:19 2018
                      WREG   0x000fe8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f452.asm
                 __FPFLAGS   0x000001       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
             __FPFLAGSbits   0x000001       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-                    count   0x00008a       data     extern C:\Users\Abigail\MPLABXProjects\3006\Lab1\lab1.c
-                curr_byte   0x000083       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-               curr_entry   0x000085       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 data_ptr   0x000087       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     prom   0x000080       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                    count   0x00038b       data     extern C:\Users\Abigail\MPLABXProjects\3006\Lab1\lab1.c
+                curr_byte   0x000384       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               curr_entry   0x000386       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 data_ptr   0x000388       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     prom   0x000381       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
 
 
 
@@ -277,11 +277,11 @@ Linker Map File - Created Wed Sep 12 16:48:19 2018
                      SIGN   0x000000       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
             __FPFLAGSbits   0x000001       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
                 __FPFLAGS   0x000001       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-                     prom   0x000080       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                curr_byte   0x000083       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-               curr_entry   0x000085       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 data_ptr   0x000087       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                    count   0x00008a       data     extern C:\Users\Abigail\MPLABXProjects\3006\Lab1\lab1.c
+                     prom   0x000381       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                curr_byte   0x000384       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               curr_entry   0x000386       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 data_ptr   0x000388       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                    count   0x00038b       data     extern C:\Users\Abigail\MPLABXProjects\3006\Lab1\lab1.c
                 PORTAbits   0x000f80       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f452.asm
                     PORTA   0x000f80       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f452.asm
                 PORTBbits   0x000f81       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f452.asm
