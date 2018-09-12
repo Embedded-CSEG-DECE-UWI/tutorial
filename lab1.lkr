@@ -37,7 +37,7 @@ DATABANK   NAME=bnk2       START=0x381             END=0x5FF
 //DATABANK   NAME=gpr4       START=0x400             END=0x4FF
 
 #IFDEF _DEBUGDATASTART
-  DATABANK   NAME=gpr5       START=0x500             END=_DATAEND
+  //DATABANK   NAME=gpr5       START=0x500             END=_DATAEND
   DATABANK   NAME=dbgspr     START=_DEBUGDATASTART   END=_DEND           PROTECTED
 #ELSE //no debug
   DATABANK   NAME=gpr5       START=0x500             END=0x5FF
