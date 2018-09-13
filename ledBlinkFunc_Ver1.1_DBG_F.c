@@ -25,12 +25,15 @@ void low_isr()
 {
     if(INTCONbits.TMR0IF == 1)
     {
+        cnt++ ;
+                
         if(cnt == 100)
         {
             cnt = 0;
             toggleBit();
             WriteTimer0(25535);
         }
+        
         INTCONbits.TMR0IF = 0;
     }
 }
@@ -43,16 +46,16 @@ void toggleBit()
 
 void configTimer()
 {
-  //Turn off timer0
-  //Set timer to 16 bit mode
-  //Set to timer source to internal
-  //Clear PSA bit
-  //Set prescalar to 2
-  //Load Timer0
-  //Turn on Timer0
-  //Set the Timer0 Interrupt Enable Bit
-  //Enable Peripheral Interrupt
-  //Enable Global Interrupt Enable bit
+  T0CONbits.TMR0ON = 0;              //Turn off timer0
+  T0CONbits.T08BIT = 0;              //Set timer to 16 bit mode
+  T0CONbits.T0CS = 0;                //Set to timer source to internal
+  T0CONbits.T0SE = 0;                //Clear PSA bit
+  T0CONbits.T0PS = 0;                //Set prescalar to 2
+  WriteTimer0(25535);                //Load Timer0
+  T0CONbits.TMR0ON = 1;              //Turn on Timer0
+  INTCONbits.TMR0IE = 1;             //Set the Timer0 Interrupt Enable Bit
+  INTCONbits.PEIE = 1;               //Enable Peripheral Interrupt
+  INTCONbits.GIE =1;                 //Enable Global Interrupt Enable bit
 }
 
 
@@ -60,7 +63,7 @@ void configTimer()
 
 void main(void)
 {
-    TRISB = 0x00;               //configures all the TRISB bits as outputs
+    TRISBbits.RB4 = 0;          //configures RB4 as an OUTPUT the TRISB bits as outputs
     configTimer();              //Set the timer up for 1 second
     while(1)                    //Infinite Loop
     Sleep();                    //Puts the microprocessor to sleep mode
