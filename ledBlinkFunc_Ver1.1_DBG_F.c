@@ -51,7 +51,9 @@ void configTimer()
   T0CONbits.T0CS = 0;                //Set to timer source to internal
   T0CONbits.T0SE = 0;                //Clear PSA bit
   T0CONbits.T0PS = 0;                //Set prescalar to 2
+  T0CONbits.PSA = 0;                 //Timer0 prescalar assigned
   WriteTimer0(25535);                //Load Timer0
+  INTCON2bits.TMR0IP = 0;            //Disable high priority interrupt             
   T0CONbits.TMR0ON = 1;              //Turn on Timer0
   INTCONbits.TMR0IE = 1;             //Set the Timer0 Interrupt Enable Bit
   INTCONbits.PEIE = 1;               //Enable Peripheral Interrupt
@@ -66,7 +68,11 @@ void main(void)
     TRISBbits.RB4 = 0;          //configures RB4 as an OUTPUT the TRISB bits as outputs
     configTimer();              //Set the timer up for 1 second
     while(1)                    //Infinite Loop
-    Sleep();                    //Puts the microprocessor to sleep mode
+    {
+        if(INTCONbits.TMR0IF == 1)
+            toggleBit();
+    }
+    //Sleep();                    //Puts the microprocessor to sleep mode
 }
 
 
