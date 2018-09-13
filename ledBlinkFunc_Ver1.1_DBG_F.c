@@ -62,7 +62,6 @@ void main(void)
 {
     TRISB = 0x00;               //configures all the TRISB bits as outputs
     configTimer();              //Set the timer up for 1 second
-    configGloabalInterrupts();  //Set the global interrupt for operation
     while(1)                    //Infinite Loop
     Sleep();                    //Puts the microprocessor to sleep mode
 }
