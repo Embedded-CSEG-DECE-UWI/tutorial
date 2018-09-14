@@ -10,21 +10,28 @@
  * 
  */
 #include <p18cxxx.h>            //includes library to use features of pic18
+#include <delays.h>             //includes library to use delay functions
 
-
+//#define _XTAL_FREQ 4000000
 
 /*Configuration pragmas for the c18 C compiler*/
 #pragma config OSC = XT         //Oscillator set to external
 #pragma config WDT = OFF        //Watchdog Timer OFF
 #pragma config LVP = OFF        //Low Voltage Programming OFF
 
+
 /*
  * 
  */
 
-int isSwitchOn()
+int switchOn()
 {   
-    return PORTBbits.RB2;            //Returns the current state of the switch
+    int res = 0;
+    if(PORTBbits.RB2 == 1)
+        res = 1;
+    else
+        res = 0;
+    return res;            //Returns the current state of the switch
 }
 
 void setTransistorSwitch(int val)
@@ -40,20 +47,29 @@ void configPins()
     TRISBbits.RB2 = 1;              //INPUT: Switch
     TRISBbits.RB3 = 0;              //OUTPUT: Signal to the transistor
     TRISBbits.RB4 = 0;              //OUTPUT: Green LED
+    //PORTB = 0x00;
 }
 
 
 int main() 
 {
-    if (isSwitchOn)
+   //configPins();
+   TRISB = 0b0000100;          //configures TRISB bit 2 as an input and bit 4 as an output
+   while (1)
+   {
+     if (PORTBbits.RB2 == 1)
     {
-        setTransistorSwitch(1);//Send a HIGH to PIN XX
+       setTransistorSwitch(1);//Send a HIGH to PIN XX
+        PORTBbits.RB4 = 1;
     }
-    else
+    else if (PORTBbits.RB2 == 0)
     {
-        setTransistorSwitch(0);//Send a LOW to PIN XX
+       setTransistorSwitch(0);//Send a LOW to PIN XX
+        PORTBbits.RB4 = 0;
     }
    
+   }
+ 
     return 0;
 }
 
