@@ -1,0 +1,4 @@
+Error[1034] C:\Users\Abigail\MPLABXProjects\3006\Lab1\lab1lcd.c 18 : previous definition of macro 'E_PIN' does not agree
+Error[1034] C:\Users\Abigail\MPLABXProjects\3006\Lab1\lab1lcd.c 19 : previous definition of macro 'RS_PIN' does not agree
+Error[1034] C:\Users\Abigail\MPLABXProjects\3006\Lab1\lab1lcd.c 20 : previous definition of macro 'RW_PIN' does not agree
+Error[1034] C:\Users\Abigail\MPLABXProjects\3006\Lab1\lab1lcd.c 21 : previous definition of macro 'DATA_PORT' does not agree

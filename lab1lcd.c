@@ -14,7 +14,14 @@
 #define l3  0x14
 #define l4  0x54
 
-
+#define E_PIN = PORTbits.RD0;
+#define RS_PIN = PORTbits.RD1;
+#define RW_PIN = PORTbits.RD2;
+#define DATA_PORT = PORTD;
+/*#define DB4_PIN = PORTbits.RD4;
+#define DB5_PIN = PORTbits.RD5;
+#define DB6_PIN = PORTbits.RD6;
+#define DB7_PIN = PORTbits.RD7;*/
 
 //PreLab Q16a
 void DelayFor18TCY(void)
@@ -34,7 +41,7 @@ void DelayFor18TCY(void)
 }
 
 //PreLab Q16b
-void Delayvoid DelayXLCD (void)
+void DelayXLCD (void)
 {
     Delay1KTCYx(20);    // Delay of 5ms
                         // Cycles = (TimeDelay * Fosc) / 4
