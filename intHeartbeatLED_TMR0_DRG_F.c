@@ -21,6 +21,8 @@ void toggle_LED(void);
 void configInterrupts(void);
 void configTMR0(void);
 
+int counter = 0;                                    //declares and initializes a global counter to aid in accurate timing
+
 #pragma code HIGH_INTERRUPT_VECTOR = 0x08           //tells the compiler that the high interrupt vector is located at 0x09
 void high_ISR(void){                                //high interrupt vector ISR
     _asm                                            //allows asm code to be used into a C source file
@@ -31,12 +33,19 @@ void high_ISR(void){                                //high interrupt vector ISR
 
 #pragma interrupt toggle_LED
 void toggle_LED(void){                              //interrupt handler to blink heartbeat LED
+    counter++;
     INTCONbits.GIE = 0;                             //disables interrupt sources while in handler to prevent possible looping
     INTCONbits.TMR0IE = 0;
-    
-    if(INTCONbits.TMR0IF == 1){                     //checks the status of the TMR0 interrupt flag
+ 
+    /*
+     * The count 4 was used because since the pre-scaler is 1:4 and it takes 65536us for TMR0 to overflow without a pre-scaler,
+     * with the pre-scaler it would take 262144us. Therefore, by counting 3.8 (approximately 4 times), the LED will blink every 
+     * 1000000us or 1s
+     */
+    if((INTCONbits.TMR0IF == 1)&&(counter == 4)){   //checks the status of the TMR0 interrupt flag and that the counter has incremented to 4
         PORTBbits.RB4 = 1;                          //blinks the LED if the flag was set
         Delay10KTCYx(20);
+        counter = 0;                                //resets the counter
     }
     INTCONbits.TMR0IF = 0;                          //clears the interrupt flag
     INTCONbits.GIE = 1;                             //re-enables interrupt sources on exit from the handler
@@ -72,7 +81,7 @@ void configTMR0(void){
     T0CONbits.PSA = 0;                              //enables a pre-scaler to be used 
     
     T0CONbits.T0PS2 = 0;                            //these 3-bits enables the pre-scalar ratio to be set (in this case 1:8)
-    T0CONbits.T0PS1 = 1;
-    T0CONbits.T0PS0 = 0;
+    T0CONbits.T0PS1 = 0;
+    T0CONbits.T0PS0 = 1;
 }
 
