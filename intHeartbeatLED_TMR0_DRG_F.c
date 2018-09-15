@@ -80,7 +80,7 @@ void configTMR0(void){
     T0CONbits.T0CS = 0;                             //uses the internal clock of the PIC to increment TMR0
     T0CONbits.PSA = 0;                              //enables a pre-scaler to be used 
     
-    T0CONbits.T0PS2 = 0;                            //these 3-bits enables the pre-scalar ratio to be set (in this case 1:8)
+    T0CONbits.T0PS2 = 0;                            //these 3-bits enables the pre-scalar ratio to be set (in this case 1:4)
     T0CONbits.T0PS1 = 0;
     T0CONbits.T0PS0 = 1;
 }
