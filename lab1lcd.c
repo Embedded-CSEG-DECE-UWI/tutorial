@@ -1,7 +1,7 @@
 /* Lab 1 first file - ID number 815006394 Group A   */
 #include <p18cxxx.h>   
 #include <delays.h>
-#include <xlcd.h>
+#include "xlcd_A.h"
 #include <usart.h>
 
 /* Set configuration bits for use with PICKit3 and 4MHz oscillator */
@@ -24,17 +24,14 @@ PORTD = DATA_PORT;
 #define DB6_PIN = PORTbits.RD6;
 #define DB7_PIN = PORTbits.RD7;*/
 
-void configPins()
+/*void configPins()
 {
-    /*PORTDbits.RD0 = E_PIN;
-    LATDbits.LATD1 = RS_PIN;
-    LATDbits.LATD2 = RW_PIN;
-    PORTD = DATA_PORT;*/
+
     PORTDbits.RD0 = E_PIN;
     PORTDbits.RD1 = RS_PIN;
     PORTDbits.RD2 = RW_PIN;
     PORTD = DATA_PORT;
-}
+}*/
 
 //PreLab Q16a
 void DelayFor18TCY(void)
@@ -79,21 +76,28 @@ int i;
 
 void main(void)
 {
-    configPins();
-    
+    //configPins();
+    WriteCmdXLCD(BLINK_ON);
     //PreLab Q18a
     //config LCD for 4-bit operation and two-line display
     OpenXLCD (FOUR_BIT & LINES_5X7);
-    
+    SetDDRamAddr(l2);
+    for (i=0;i<4;i++)
+        WriteCmdXLCD(SHIFT_DISP_RIGHT);
     //Prelab Q18b
     //block execution when LCD is busy
+    //config USART
+    //OpenUSART (USART_TX_INT_OFF & USART_RX_INT_OFF & USART_ASYNCH_MODE & USART_EIGHT_BIT & USART_CONT_RX, 25);
     while (BusyXLCD());     //returns 1 if busy
-    {
-        //insert task to be performed if LCD is not busy
-        SetDDRamAddr(l2);       //PreLab Q18c - beginning at line 2
-        for (i=0;i<4;i++)
-            WriteCmdXLCD(SHIFT_DISP_RIGHT);     //
-        putsXLCD(LCDbuf);       //PreLab Q18d
-        putrsXLCD(Title);       //PreLab Q18e
-    }
+    //insert task to be performed if LCD is not busy
+    //SetDDRamAddr(l2);       //PreLab Q18c - beginning at line 2
+    //for (i=0;i<4;i++)
+    //    WriteCmdXLCD(SHIFT_DISP_RIGHT);     //
+    putsXLCD(LCDbuf);       //PreLab Q18d
+    //for(i=0;i<11;i++)
+    //    DelayPORXLCD();
+    while(BusyXLCD());
+    putrsXLCD(Title);       //PreLab Q18e
+    Sleep();
+    
 }
