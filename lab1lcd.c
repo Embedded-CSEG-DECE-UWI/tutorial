@@ -2,7 +2,8 @@
 #include <p18cxxx.h>   
 #include <delays.h>
 #include "xlcd_A.h"
-#include <usart.h>
+#include <string.h>
+#include <stdio.h>
 
 /* Set configuration bits for use with PICKit3 and 4MHz oscillator */
 #pragma config OSC = HS
