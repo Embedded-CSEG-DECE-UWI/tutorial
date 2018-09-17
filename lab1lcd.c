@@ -9,19 +9,32 @@
 #pragma config WDT = OFF
 #pragma config LVP = OFF
 
-#define l1  0x00
-#define l2  0x40
-#define l3  0x14
-#define l4  0x54
+#define l1  0x00    //addresses of the beginning of line1
+#define l2  0x40    //addresses of the beginning of line2
+#define l3  0x14    //addresses of the beginning of line3
+#define l4  0x54    //addresses of the beginning of line4
 
-#define E_PIN = PORTbits.RD0;
-#define RS_PIN = PORTbits.RD1;
-#define RW_PIN = PORTbits.RD2;
-#define DATA_PORT = PORTD;
+//LATDbits.LATD0 = E_PIN;
+/*PORTDbits.RD0 = E_PIN;
+PORTDbits.RD1 = RS_PIN;
+PORTDbits.RD2 = RW_PIN;
+PORTD = DATA_PORT;
 /*#define DB4_PIN = PORTbits.RD4;
 #define DB5_PIN = PORTbits.RD5;
 #define DB6_PIN = PORTbits.RD6;
 #define DB7_PIN = PORTbits.RD7;*/
+
+void configPins()
+{
+    /*PORTDbits.RD0 = E_PIN;
+    LATDbits.LATD1 = RS_PIN;
+    LATDbits.LATD2 = RW_PIN;
+    PORTD = DATA_PORT;*/
+    PORTDbits.RD0 = E_PIN;
+    PORTDbits.RD1 = RS_PIN;
+    PORTDbits.RD2 = RW_PIN;
+    PORTD = DATA_PORT;
+}
 
 //PreLab Q16a
 void DelayFor18TCY(void)
@@ -66,6 +79,8 @@ int i;
 
 void main(void)
 {
+    configPins();
+    
     //PreLab Q18a
     //config LCD for 4-bit operation and two-line display
     OpenXLCD (FOUR_BIT & LINES_5X7);
@@ -75,9 +90,9 @@ void main(void)
     while (BusyXLCD());     //returns 1 if busy
     {
         //insert task to be performed if LCD is not busy
-        SetDDRamAddr(l2);       //PreLab Q18c
+        SetDDRamAddr(l2);       //PreLab Q18c - beginning at line 2
         for (i=0;i<4;i++)
-            WriteCmdXLCD(SHIFT_DISP_RIGHT);
+            WriteCmdXLCD(SHIFT_DISP_RIGHT);     //
         putsXLCD(LCDbuf);       //PreLab Q18d
         putrsXLCD(Title);       //PreLab Q18e
     }
