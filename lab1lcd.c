@@ -10,13 +10,15 @@
 #pragma config WDT = OFF
 #pragma config LVP = OFF
 
+#define _XTAL_FREQ 4000000UL
+
 #define l1  0x00    //addresses of the beginning of line1
 #define l2  0x40    //addresses of the beginning of line2
 #define l3  0x14    //addresses of the beginning of line3
 #define l4  0x54    //addresses of the beginning of line4
 
-const char LCDbuf[20] = "Hello World";
-const rom char Title[20] = "Program memory";
+const char LCDbuf[12] = "Hello World";
+const rom char Title[14] = "Program memory";
 int i;
 
 //LATDbits.LATD0 = E_PIN;
@@ -75,32 +77,27 @@ void DelayPORXLCD (void)
     return;
 }
 
+void setup(void)
+{
+    PORTD = 0;
+    TRISD = 0;
+    
+    OpenXLCD (FOUR_BIT & LINES_5X7);        //config LCD for 4-bit operation and two-line display
+    while (BusyXLCD());
+    SetDDRamAddr(l1);                       //starting point on second line
+    for (i=0;i<4;i++)
+        WriteCmdXLCD(SHIFT_DISP_RIGHT);     //shifts to the left 4 times
+    WriteCmdXLCD(BLINK_ON);
+}
 
 
 void main(void)
 {
-    //configPins();
-    WriteCmdXLCD(BLINK_ON);
-    //PreLab Q18a
-    //config LCD for 4-bit operation and two-line display
-    OpenXLCD (FOUR_BIT & LINES_5X7);
-    SetDDRamAddr(l2);
-    //for (i=0;i<4;i++)
-    //    WriteCmdXLCD(SHIFT_DISP_RIGHT);
-    //Prelab Q18b
-    //block execution when LCD is busy
-    //config USART
-    //OpenUSART (USART_TX_INT_OFF & USART_RX_INT_OFF & USART_ASYNCH_MODE & USART_EIGHT_BIT & USART_CONT_RX, 25);
+    setup();
     while (BusyXLCD());     //returns 1 if busy
-    //insert task to be performed if LCD is not busy
-    //SetDDRamAddr(l2);       //PreLab Q18c - beginning at line 2
-    //for (i=0;i<4;i++)
-    //    WriteCmdXLCD(SHIFT_DISP_RIGHT);     //
     putsXLCD(LCDbuf);       //PreLab Q18d
-    //for(i=0;i<11;i++)
-    //    DelayPORXLCD();
     while(BusyXLCD());
     putrsXLCD(Title);       //PreLab Q18e
+    while(BusyXLCD());
     Sleep();
-    
 }

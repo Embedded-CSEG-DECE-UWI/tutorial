@@ -45,14 +45,14 @@
 /* CTRL_PORT defines the port where the control lines are connected.
  * These are just samples, change to match your application.
  */
- #define RW_PIN   LATBbits.LATB2   		/* PORT for RW */
- #define TRIS_RW  TRISBbits.TRISB2    	/* TRIS for RW */
+ #define RW_PIN   LATDbits.LATD2   		/* PORT for RW */
+ #define TRIS_RW  TRISDbits.TRISD2    	/* TRIS for RW */
 
- #define RS_PIN   LATBbits.LATB1   		/* PORT for RS */
- #define TRIS_RS  TRISBbits.TRISB1    	/* TRIS for RS */
+ #define RS_PIN   LATDbits.LATD1   		/* PORT for RS */
+ #define TRIS_RS  TRISDbits.TRISD1    	/* TRIS for RS */
 
- #define E_PIN    LATBbits.LATB0  		/* PORT for D  */
- #define TRIS_E   TRISBbits.TRISB0    	/* TRIS for E  */
+ #define E_PIN    LATDbits.LATD0  		/* PORT for D  */
+ #define TRIS_E   TRISDbits.TRISD0    	/* TRIS for E  */
 
 /* Display ON/OFF Control defines */
 #define DON         0b00001111  /* Display on      */

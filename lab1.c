@@ -1,5 +1,6 @@
 /* Lab 1 first file - ID number 815006394 Group A   */
 #include <p18cxxx.h>   
+#include <delays.h>
 
 /* Set configuration bits for use with PICKit3 and 4MHz oscillator */
 #pragma config OSC = HS
