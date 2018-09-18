@@ -15,6 +15,10 @@
 #define l3  0x14    //addresses of the beginning of line3
 #define l4  0x54    //addresses of the beginning of line4
 
+const char LCDbuf[20] = "Hello World";
+const rom char Title[20] = "Program memory";
+int i;
+
 //LATDbits.LATD0 = E_PIN;
 /*PORTDbits.RD0 = E_PIN;
 PORTDbits.RD1 = RS_PIN;
@@ -71,9 +75,7 @@ void DelayPORXLCD (void)
     return;
 }
 
-const char LCDbuf[20] = "Hello World";
-const rom char Title[20] = "Program memory";
-int i;
+
 
 void main(void)
 {
@@ -83,8 +85,8 @@ void main(void)
     //config LCD for 4-bit operation and two-line display
     OpenXLCD (FOUR_BIT & LINES_5X7);
     SetDDRamAddr(l2);
-    for (i=0;i<4;i++)
-        WriteCmdXLCD(SHIFT_DISP_RIGHT);
+    //for (i=0;i<4;i++)
+    //    WriteCmdXLCD(SHIFT_DISP_RIGHT);
     //Prelab Q18b
     //block execution when LCD is busy
     //config USART
