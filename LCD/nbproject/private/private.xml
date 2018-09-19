@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/MicroP%20Projects/LCD/writdata.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/setcgram.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/wcmdxlcd.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/xlcd.h</file>
+            <file>file:/C:/MicroP%20Projects/LCD/putsxlcd.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/setddram.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/openxlcd.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/busyxlcd.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/putrxlcd.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/readdata.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/lcd_prelab.c</file>
+            <file>file:/C:/MicroP%20Projects/LCD/readaddr.c</file>
+        </group>
+    </open-files>
+</project-private>
