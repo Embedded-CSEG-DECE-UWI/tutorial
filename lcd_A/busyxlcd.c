@@ -1,4 +1,5 @@
 #include <p18cxxx.h>
+#include "delays.h"
 #include "xlcd_A.h"
 
 /********************************************************************
@@ -41,7 +42,7 @@ unsigned char BusyXLCD(void)
                 DelayFor18TCY();
                 E_PIN = 0;
                 RW_PIN = 0;             // Reset control line
-                return 1;               // Return TRUE
+                return 0;               // Return TRUE
         }
         else                            // Busy bit is low
         {

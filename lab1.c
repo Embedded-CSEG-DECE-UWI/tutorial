@@ -7,6 +7,8 @@
 #pragma config WDT = OFF
 #pragma config LVP = OFF
 
+//#define XTAL_FREQ 4000000
+
 int count;
 void main (void)
 {
@@ -16,5 +18,6 @@ void main (void)
     for(count = 1; count<=15; count++)
     {
         PORTB = count;  //displays count
+        Delay10KTCYx (25);
     }
 }
