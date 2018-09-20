@@ -36,7 +36,7 @@
 /* When in 4-bit interface define if the data is in the upper
  * or lower nibble.  For lower nibble, comment the #define UPPER
  */
-/* #define UPPER */
+ #define UPPER 
 
 /* DATA_PORT defines the port to which the LCD data lines are connected */
  #define DATA_PORT      		PORTD

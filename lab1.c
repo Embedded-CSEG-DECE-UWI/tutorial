@@ -1,13 +1,14 @@
 /* Lab 1 first file - ID number 815006394 Group A   */
 #include <p18cxxx.h>   
 #include <delays.h>
+#include <portb.h>
 
 /* Set configuration bits for use with PICKit3 and 4MHz oscillator */
 #pragma config OSC = HS
 #pragma config WDT = OFF
 #pragma config LVP = OFF
 
-//#define XTAL_FREQ 4000000
+#define XTAL_FREQ 4000000
 
 int count;
 void main (void)
@@ -18,6 +19,7 @@ void main (void)
     for(count = 1; count<=15; count++)
     {
         PORTB = count;  //displays count
-        Delay10KTCYx (25);
+        Nop();
+        //Delay10KTCYx (200);
     }
 }

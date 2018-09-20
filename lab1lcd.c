@@ -1,23 +1,25 @@
 /* Lab 1 first file - ID number 815006394 Group A   */
-#include <p18f452.h>   
-#include <delays.h>
+#include <p18f452.h> 
 #include "xlcd_A.h"
-#include <string.h>
-#include <stdio.h>
+#include <delays.h>
+
+//#include <string.h>
+//#include <stdio.h>
 
 /* Set configuration bits for use with PICKit3 and 4MHz oscillator */
 #pragma config OSC = HS
 #pragma config WDT = OFF
 #pragma config LVP = OFF
 
-//#define _XTAL_FREQ 4000000UL
+#define _XTAL_FREQ 4000000
 
-#define l1  0x01    //addresses of the beginning of line1
+/*#define l1  0x01    //addresses of the beginning of line1
 #define l2  0x40    //addresses of the beginning of line2
 #define l3  0x14    //addresses of the beginning of line3
-#define l4  0x54    //addresses of the beginning of line4
+#define l4  0x54    //addresses of the beginning of line4*/
+
 char cgaddr = 0xCF;
-const char LCDbuf = "H";
+const char LCDbuf[16] = " Helo Moto Kon'n";
 const rom char Title = "P";
 int i;
 
@@ -56,20 +58,21 @@ void DelayPORXLCD (void)
 
 void setup(void)
 {
-    PORTD = 0;
-    TRISD = 0;
+    //PORTD = 0;
+    //TRISD = 0;
     //LATEbits.LATE = 0;
     OpenXLCD(FOUR_BIT & LINES_5X7);        //config LCD for 4-bit operation and two-line display
-    //while (BusyXLCD());
-    //WriteCmdXLCD(FOUR_BIT & LINES_5X7);
-    //while(BusyXLCD());
-    //WriteCmdXLCD(BLINK_ON);
-    //while(BusyXLCD());
+    while (BusyXLCD());
+    WriteCmdXLCD(FOUR_BIT & LINES_5X7);
+    while(BusyXLCD());
+    WriteCmdXLCD(BLINK_ON);
+    while(BusyXLCD());
     //WriteCmdXLCD(0x01);
     //while(BusyXLCD());
-    SetDDRamAddr(l1);                       //starting point on second line
+                           //starting point on second line
     //for (i=0;i<4;i++)
-     //   WriteCmdXLCD(SHIFT_DISP_RIGHT);     //shifts to the left 4 times
+    //WriteCmdXLCD(SHIFT_DISP_RIGHT);     //shifts to the left 4 times
+    WriteCmdXLCD(SHIFT_DISP_RIGHT);
     //WriteCmdXLCD(BLINK_ON);
     //while(BusyXLCD());
 }
@@ -78,17 +81,20 @@ void setup(void)
 void main(void)
 {
     setup();
+    while (BusyXLCD());     //returns 1 if busy
+    //putsXLCD(LCDbuf);       //PreLab Q18d
+    SetDDRamAddr(0x00);
+    //putrsXLCD(Title);
+    //putsXLCD(LCDbuf);
+    putrsXLCD("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ12546HELLO5879358WHATISTHISWHENSHALKL"); 
+        //SetCGRamAddr(cgaddr);
     while(1)
     {
-        //while (BusyXLCD());     //returns 1 if busy
-        //putsXLCD(LCDbuf);       //PreLab Q18d
-        putrsXLCD(Title); 
-        //SetCGRamAddr(cgaddr);
-        Nop();
+        
     }
     //while(BusyXLCD());
     //putrsXLCD(Title);       //PreLab Q18e
     
     //while(BusyXLCD());
-    Sleep();
+    //Sleep();
 }
