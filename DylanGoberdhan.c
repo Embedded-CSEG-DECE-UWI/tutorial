@@ -1,1 +1,3 @@
-// Chelsea is GARBAGE
+/* Chelsea is GARBAGE
+ HEY NOW YOURE AN ALLSTAR 
+ */
